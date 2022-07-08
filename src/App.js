@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/header/Header';
 import Hero from './components/Hero/Hero';
-import HotOffers from './components/sections/HotOffers.';
+import HotOffers from './components/sections/HotOffers';
 import Categories from './components/sections/Categories';
 import NewReleases from './components/sections/NewReleases';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
