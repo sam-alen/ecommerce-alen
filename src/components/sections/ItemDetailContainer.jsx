@@ -28,18 +28,18 @@ const ItemDetailContainer = () => {
             <img src={products[0].image} alt="" />
           </div>
 
-          <div className="indicator ml-10">
-            <div className="indicator-item ">
+          <div class="indicator ml-10">
+            <div class="indicator-item ">
               <button
-                className="btn btn-primary"
+                class="btn btn-primary"
                 onClick={() => productAmountChange(products[0], +1)}
               >
                 Buy
               </button>
             </div>
-            <div className="card border">
-              <div className="card-body">
-                <h2 className="card-title">{products[0].name}</h2>
+            <div class="card border">
+              <div class="card-body">
+                <h2 class="card-title">{products[0].name}</h2>
                 <p>{products[0].desc}</p>
               </div>
             </div>

@@ -5,34 +5,36 @@ export const ProductCartContext = createContext();
 const { Provider } = ProductCartContext;
 
 export const ProductCartProvider = ({ children }) => {
-  const [productCart, setProductCart] = useState({});
+  const [productCart, setProductCart] = useState([]);
   const productAmountChange = (product, amount) => {
     setProductCart((prevState) => {
-      const currentProduct = prevState[product.id] || {
-        ...product,
-        amountInCart: 0,
-      };
-
+      const currentProduct = prevState.filter(
+        (cart) => cart.id === product.id
+      )[0] || { ...product, amountInCart: 0 };
+      const newProductCart = prevState.filter((cart) => cart.id !== product.id);
+      
       if (Math.max(currentProduct.amountInCart + amount, 0) > 0) {
         currentProduct.amountInCart += amount;
 
-        return { 
-          ...prevState,
-          [product.id]: currentProduct
-        };
+
+        return [
+          ...newProductCart,
+          currentProduct,
+        ];
       }
 
-      const {[product.id]: productDeleted, ...rest} = prevState;
-
-      return rest;
+      return newProductCart;
     });
   };
+
+  const resetCart = () => setProductCart([]);
 
   return (
     <Provider
       value={{
         productCart,
         productAmountChange,
+        resetCart
       }}
     >
       {children}

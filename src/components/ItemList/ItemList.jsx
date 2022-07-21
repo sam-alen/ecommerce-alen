@@ -20,7 +20,7 @@ function ItemList() {
       {products.filter(product => product.category === 'basics').map(product => ( 
         <div key={product.id} className="card-compact w-96 shadow-xl m-auto p-auto card-side card-compact">
         <figure className="px-10 pt-10">
-          <img src={product.image} alt="Shoes" className="rounded-xl" />
+          <img src={product.image} alt="Shoes" class="rounded-xl" />
         </figure>
         <div className="card-body items-center text-center m-auto">
           <h2 className="card-title">{product.name}</h2>
@@ -28,7 +28,7 @@ function ItemList() {
           <div className="card-actions">
             <Link to={`/details/${product.id}`}>
               <button className="btn btn-primary">
-                Details
+                More
               </button>
             </Link>
           </div>
