@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
-import { getFetch } from "../../helpers/getFetch";
 import { useState, useEffect, useContext } from "react";
 import { ProductCartContext } from "../../context/ProductCartProvider";
-import { getFirestore, doc, getDocs, collection, query, where, getDoc } from 'firebase/firestore/lite'
+import { getFirestore, doc,  getDoc } from 'firebase/firestore/lite'
 
 const ItemDetailContainer = () => {
   const [products, setProducts] = useState({});

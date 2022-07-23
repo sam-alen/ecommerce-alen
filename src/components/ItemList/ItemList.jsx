@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-import { getFetch } from '../../helpers/getFetch'
 import {Link} from 'react-router-dom'
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
 

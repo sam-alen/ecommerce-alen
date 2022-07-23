@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react'
-import { getFetch } from '../../helpers/getFetch'
 import {Link} from 'react-router-dom'
-
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
 
 function HotOffers() {
 
@@ -9,9 +8,10 @@ function HotOffers() {
   
 
   useEffect(() => {
-    getFetch
-      .then(resp => setProducts(resp))
-      .catch(err => console.log(err))
+    const db = getFirestore();
+    const queryCollections = collection(db, 'productos');
+    getDocs(queryCollections)
+       .then(resp => setProducts(resp.docs.map(prod => ({id: prod.id, ...prod.data()}))))
   }, [])
 
   console.log(products);
