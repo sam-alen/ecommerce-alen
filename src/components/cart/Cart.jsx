@@ -1,10 +1,32 @@
 import { useContext } from "react"
 import { ProductCartContext } from "../../context/ProductCartProvider"
+import { collection,addDoc, getFirestore} from 'firebase/firestore'
 
 function Cart() {
   const cartContext = useContext(ProductCartContext);
-  const {productCart, resetCart} = cartContext;
- 
+  const {productCart, resetCart, productAmountChange} = cartContext;
+  console.log(productCart);
+
+  const generateOrder = ()=>{
+    const order = {};
+    order.buyer = {name: "John Doe", address: "123 Main St", city: "New York", state: "NY", zip: "10001"};
+    order.productos = productCart;
+    order.total = productCart.reduce(
+      (acc, product) => acc + product.price * product.amountInCart,
+      0
+    );
+    order.date = new Date();
+
+      const db = getFirestore()
+      const queryInsert = collection(db, 'orders')
+      addDoc(queryInsert, order)
+        .then( resp => console.log(resp))
+        .catch( err => console.log(err))
+        .finally(()=>{
+          resetCart();
+        })
+
+}
     return(
         <div>
             <h1>Carrito</h1>
@@ -20,7 +42,19 @@ function Cart() {
                   height: '100px',
                 }}/>
                 <span>{product.name}</span>
-                <span>{product.amountInCart}</span>
+                <div>
+                  <button 
+                    onClick={() => productAmountChange(product, -1)}
+                  >
+                    -
+                  </button>
+                  <span>{product.amountInCart}</span>
+                  <button
+                    onClick={() => productAmountChange(product, +1)}
+                  >
+                    +
+                  </button>
+                </div>
                 <span>${product.price}</span>
               </div>)}
               </ul>
@@ -33,6 +67,7 @@ function Cart() {
             </span>
 
             <button onClick={resetCart} className='btn flex'>Vaciar carrito</button>
+            <button onClick={generateOrder} className='btn flex'>Generar Orden</button>
         </div>
       )
 }
