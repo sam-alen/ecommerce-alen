@@ -18,7 +18,6 @@ const ItemDetailContainer = () => {
       setLoading(false);
   }, []);
 
-  console.log(products);
 
   return (
     <div>
@@ -30,18 +29,18 @@ const ItemDetailContainer = () => {
             <img src={products.image} alt="" />
           </div>
 
-          <div class="indicator ml-10">
-            <div class="indicator-item ">
+          <div className="indicator ml-10">
+            <div className="indicator-item ">
               <button
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => productAmountChange(products, +1)}
               >
                 Buy
               </button>
             </div>
-            <div class="card border">
-              <div class="card-body">
-                <h2 class="card-title">{products.name}</h2>
+            <div className="card border">
+              <div className="card-body">
+                <h2 className="card-title">{products.name}</h2>
                 <p>{products.desc}</p>
               </div>
             </div>

@@ -16,14 +16,13 @@ function ItemList() {
 
   }, [])
 
-  console.log(products);
 
   return (
     <div className='flex justify-center px-10 pt-10'>
       {products.filter(product => product.category === 'basics').map(product => ( 
         <div key={product.id} className="card-compact w-96 shadow-xl m-auto p-auto card-side card-compact">
         <figure className="px-10 pt-10">
-          <img src={product.image} alt="Shoes" class="rounded-xl" />
+          <img src={product.image} alt="Shoes" className="rounded-xl" />
         </figure>
         <div className="card-body items-center text-center m-auto">
           <h2 className="card-title">{product.name}</h2>

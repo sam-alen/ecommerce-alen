@@ -5,7 +5,6 @@ import { collection,addDoc, getFirestore} from 'firebase/firestore'
 function Cart() {
   const cartContext = useContext(ProductCartContext);
   const {productCart, resetCart, productAmountChange} = cartContext;
-  console.log(productCart);
 
   const generateOrder = ()=>{
     const order = {};
@@ -15,16 +14,13 @@ function Cart() {
       (acc, product) => acc + product.price * product.amountInCart,
       0
     );
-    order.date = new Date();
 
       const db = getFirestore()
       const queryInsert = collection(db, 'orders')
       addDoc(queryInsert, order)
         .then( resp => console.log(resp))
         .catch( err => console.log(err))
-        .finally(()=>{
-          resetCart();
-        })
+        .finally(()=>{resetCart()});
 
 }
     return(
@@ -58,7 +54,7 @@ function Cart() {
                 <span>${product.price}</span>
               </div>)}
               </ul>
-              <span class="text-info">
+              <span className="text-info">
                 Subtotal: $
                 {productCart.reduce(
                   (acc, product) => acc + product.price * product.amountInCart,
@@ -66,8 +62,8 @@ function Cart() {
                 )}
             </span>
 
-            <button onClick={resetCart} className='btn flex'>Vaciar carrito</button>
-            <button onClick={generateOrder} className='btn flex'>Generar Orden</button>
+            <button onClick={resetCart} className='btn flex'>Reset Cart</button>
+            <button onClick={generateOrder} className='btn flex'>Generate Order</button>
         </div>
       )
 }

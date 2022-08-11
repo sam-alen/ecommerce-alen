@@ -5,29 +5,29 @@ import CartWidget from "./CartWidget";
 function Header() {
 
   return (
-    <div class="navbar bg-base-100">
-    <div class="flex-1">
-        <Link class="btn btn-ghost normal-case text-xl" to="/">Ecommerce A.S</Link>
+    <div className="navbar bg-base-100">
+    <div className="flex-1">
+        <Link className="btn btn-ghost normal-case text-xl" to="/">Ecommerce A.S</Link>
     </div>
-    <div class="flex-none">
-    <ul class="menu menu-horizontal p-0">
+    <div className="flex-none">
+    <ul className="menu menu-horizontal p-0">
       <li><Link to="/new-releases">New Releases</Link></li>
       <li><Link to="/hot-offers">Hot Deals</Link></li>
     </ul>
     </div>
-    <div class="flex-none">
+    <div className="flex-none">
         <CartWidget />
-        <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
+        <div className="dropdown dropdown-end">
+        <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
             <img alt="Cart" src="https://api.lorem.space/image/face?hash=33791" />
             </div>
         </label>
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             <li>
-            <a class="justify-between">
+            <a className="justify-between">
                 Profile
-                <span class="badge">New</span>
+                <span name="badge">New</span>
             </a>
             </li>
             <li><a>Settings</a></li>
